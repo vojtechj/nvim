@@ -1,6 +1,6 @@
 -- colorscheme: https://github.com/overcache/NeoSolarized/blob/master/colors/NeoSolarized.vim
 vim.o.termguicolors = true
-vim.cmd('colorscheme neosolarized')
+vim.cmd('colorscheme NeoSolarized')
 
 -- settings
 vim.o.number = true

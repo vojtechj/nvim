@@ -21,8 +21,17 @@ vim.o.hlsearch = false
 -- mappings
 vim.g.mapleader = " "
 
-vim.keymap.set("n", "<leader>q", "<CMD>qa<CR>")
-vim.keymap.set("n", "<leader><leader>", "<CMD>set hlsearch!<CR>")
+-- Functional wrapper for mapping custom keybindings
+function map(mode, lhs, rhs, opts)
+    local options = { noremap = true }
+    if opts then
+        options = vim.tbl_extend("force", options, opts)
+    end
+    vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+end
 
-vim.keymap.set("c", "<c-p>", "<up>")
-vim.keymap.set("c", "<c-n>", "<down>")
+map("n", "<leader>q", ":qa<CR>")
+map("n", "<leader><leader>", ":set hlsearch!<CR>")
+
+map("c", "<c-p>", "<up>")
+map("c", "<c-n>", "<down>")

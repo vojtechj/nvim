@@ -6,8 +6,12 @@ vim.cmd('colorscheme NeoSolarized')
 vim.o.number = true
 vim.o.relativenumber = true
 
+vim.o.scrolloff = 8
+
 vim.o.tabstop = 4
+vim.o.softtabstop = 4
 vim.o.shiftwidth = 4
+vim.o.smartindent = true
 
 vim.o.wrap = false
 
@@ -42,22 +46,49 @@ map("c", "<c-n>", "<down>")
 map("n", "<leader>g", ":sil lgrep! ")
 map("n", "<leader>r", ":sil lgrep! <c-r><c-w> ")
 
+map("n", "<leader>v", "<c-w><c-v>")
+map("n", "<leader>x", "<c-w><c-c>")
+
 map("n", "<leader>o", ":lopen<CR>")
 map("n", "<leader>c", ":lclose<CR>")
-map("n", "<c-p>", ":lprev<CR>")
-map("n", "<c-n>", ":lnext<CR>")
+map("n", "<c-p>", ":lprev<CR>zz")
+map("n", "<c-n>", ":lnext<CR>zz")
+
+map("n", "<c-d>", "<c-d>zz")
+map("n", "<c-u>", "<c-u>zz")
+map("n", "n", "nzz")
+map("n", "N", "Nzz")
 
 map("n", "<leader>h", "<c-w>h")
 map("n", "<leader>l", "<c-w>l")
 map("n", "<leader>j", "<c-w>j")
 map("n", "<leader>k", "<c-w>k")
 
-map("n", "<leader>=", "10<c-w>+")
-map("n", "<leader>-", "10<c-w>-")
-map("n", "<leader>.", "10<c-w>>")
-map("n", "<leader>,", "10<c-w><")
+map("n", "<a-j>", "5<c-w>-")
+map("n", "<a-k>", "5<c-w>+")
+map("n", "<a-.>", "10<c-w>>")
+map("n", "<a-,>", "10<c-w><")
 
 map("n", "<leader>;", ":")
 
 map("n", "gk", "gg")
 map("n", "gj", "G")
+
+map("n", "<leader>f", ":Telescope find_files<cr>")
+map("n", "<leader>b", ":Telescope buffers<cr>")
+
+-- Plugins
+vim.cmd [[packadd packer.nvim]]
+
+return require('packer').startup(function(use)
+	-- Packer can manage itself
+	use 'wbthomason/packer.nvim'
+
+	-- Telescope
+	use {
+		'nvim-telescope/telescope.nvim', tag = '0.1.1',
+		-- or                            , branch = '0.1.x',
+		requires = { {'nvim-lua/plenary.nvim'} }
+	}
+
+end)

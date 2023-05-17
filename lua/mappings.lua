@@ -1,5 +1,10 @@
 vim.g.mapleader = " "
 
+vim.keymap.set("n", "<up>", "<c-y>")
+vim.keymap.set("n", "<down>", "<c-e>")
+vim.keymap.set("n", "<left>", "<c-u>")
+vim.keymap.set("n", "<right>", "<c-d>")
+
 vim.keymap.set("n", "<leader>q", ":qa<CR>")
 vim.keymap.set("n", "<leader><leader>", ":set hlsearch!<CR>")
 

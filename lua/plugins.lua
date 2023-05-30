@@ -4,6 +4,8 @@ return require('packer').startup(function(use)
 	-- Packer can manage itself
 	use 'wbthomason/packer.nvim'
 
+	use 'twanh/nvim-pydoc'
+
 	-- Telescope
 	use {
 		'nvim-telescope/telescope.nvim', tag = '0.1.1',

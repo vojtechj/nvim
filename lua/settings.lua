@@ -21,3 +21,5 @@ vim.o.hlsearch = false
 
 vim.o.grepprg = [[rg --vimgrep --smart-case $*]]
 vim.o.grepformat = '%f:%l:%c:%m'
+
+vim.g.nvim_pydoc_command = 'python -m pydoc'

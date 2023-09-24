@@ -1,44 +1,52 @@
-vim.cmd [[packadd packer.nvim]]
+return {
+	-- NeoSolarized colorscheme
+	-- the colorscheme should be available when starting Neovim
+	{
+		"overcache/NeoSolarized",
+		lazy = false, -- make sure we load this during startup if it is your main colorscheme
+		priority = 1000, -- make sure to load this before all the other start plugins
+		config = function()
+			-- load the colorscheme here
+			vim.cmd([[colorscheme NeoSolarized]])
+		end,
+	},
 
-return require('packer').startup(function(use)
-	-- Packer can manage itself
-	use 'wbthomason/packer.nvim'
+	-- LSP-Zero
+	{'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
 
-	use 'overcache/NeoSolarized'
+	--- Uncomment these if you want to manage LSP servers from neovim
+	{'williamboman/mason.nvim'},
+	{'williamboman/mason-lspconfig.nvim'},
 
-	use 'twanh/nvim-pydoc'
+	-- LSP Support
+	{
+		'neovim/nvim-lspconfig',
+		dependencies = {
+			{'hrsh7th/cmp-nvim-lsp'},
+		},
+	},
+
+	-- Autocompletion
+	{
+		'hrsh7th/nvim-cmp',
+		dependencies = {
+			{'L3MON4D3/LuaSnip'},
+		}
+	},
 
 	-- Telescope
-	use {
-		'nvim-telescope/telescope.nvim', tag = '0.1.1',
-		-- or                            , branch = '0.1.x',
-		requires = { {'nvim-lua/plenary.nvim'} }
-	}
+	{
+		'nvim-telescope/telescope.nvim', tag = '0.1.3',
+		dependencies = {
+			{'nvim-lua/plenary.nvim' },
+		}
+    },
 
-	-- LSP Zero
-	use {
-	  'VonHeikemen/lsp-zero.nvim',
-	  branch = 'v3.x',
-	  requires = {
-		{'williamboman/mason.nvim'},
-		{'williamboman/mason-lspconfig.nvim'},
-
-		-- LSP Support
-		{'neovim/nvim-lspconfig'},
-		-- Autocompletion
-		{'hrsh7th/nvim-cmp'},
-		{'hrsh7th/cmp-nvim-lsp'},
-		{'L3MON4D3/LuaSnip'},
-	  }
-	}
-
-	-- Goto Preview
-	use {
+	-- Goto-Preview
+	{
 		'rmagatti/goto-preview',
 		config = function()
-			require('goto-preview').setup {}
-		end
-	}
-
-end)
-
+			require('goto-preview').setup({})
+		end,
+	},
+}

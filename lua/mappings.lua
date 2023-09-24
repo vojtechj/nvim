@@ -1,9 +1,9 @@
 vim.g.mapleader = " "
 
-vim.keymap.set("n", "<up>", "<c-y>")
-vim.keymap.set("n", "<down>", "<c-e>")
-vim.keymap.set("n", "<left>", "<c-u>")
-vim.keymap.set("n", "<right>", "<c-d>")
+vim.keymap.set("n", "<up>", "<c-y>0L")
+vim.keymap.set("n", "<down>", "<c-e>0H")
+vim.keymap.set("n", "<left>", "<c-u>0L")
+vim.keymap.set("n", "<right>", "<c-d>0H")
 
 vim.keymap.set("n", "<leader>q", ":qa<CR>")
 vim.keymap.set("n", "<leader><leader>", ":set hlsearch!<CR>")
@@ -46,6 +46,14 @@ vim.keymap.set("n", "<leader>6", ":e #<CR>")
 vim.keymap.set("n", "gk", "gg")
 vim.keymap.set("n", "gj", "G")
 
-vim.keymap.set("n", "<leader>f", ":Telescope find_files<cr>")
-vim.keymap.set("n", "<leader>b", ":Telescope buffers<cr>")
-vim.keymap.set("n", "<leader>d", ":Telescope oldfiles<cr>")
+local builtin = require('telescope.builtin')
+vim.keymap.set("n", "<leader>f", builtin.find_files, {})
+vim.keymap.set("n", "<leader>b", builtin.buffers, {})
+vim.keymap.set("n", "<leader>d", builtin.oldfiles, {})
+
+local gt = require('goto-preview')
+vim.keymap.set("n", "gd", gt.goto_preview_definition, {})
+vim.keymap.set("n", "gD", gt.goto_preview_implementation, {})
+vim.keymap.set("n", "gr", gt.goto_preview_references, {})
+vim.keymap.set("n", "gt", gt.goto_preview_type_definition, {})
+vim.keymap.set("n", "<c-[>", gt.close_all_win, {})

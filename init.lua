@@ -14,6 +14,7 @@ if not vim.loop.fs_stat(lazypath) then
     lazypath,
   })
 end
+
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins")
@@ -30,6 +31,7 @@ end)
 
 -- Mason
 require('mason').setup({})
+
 require('mason-lspconfig').setup({
   ensure_installed = {},
   handlers = {
@@ -39,5 +41,17 @@ require('mason-lspconfig').setup({
 
 -- Language servers
 require('lspconfig').clangd.setup({})
-require('lspconfig').lua_ls.setup({})
+
+require('lspconfig').lua_ls.setup({
+	settings = {
+		Lua = {
+			diagnostics = {
+				-- Get the language server to recognize the `vim` global
+				globals = {
+					'vim',
+				}
+			}
+		}
+	}
+})
 

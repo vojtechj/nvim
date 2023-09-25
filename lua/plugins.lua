@@ -8,7 +8,7 @@ return {
 		config = function()
 			require('solarized').setup({
 				styles = {
-					numbers = { fg = 'NONE', bg = 'NONE' },
+					numbers = { fg = '#2aa198' },
 				},
 			})
 			-- load the colorscheme here

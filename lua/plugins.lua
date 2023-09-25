@@ -9,7 +9,11 @@ return {
 			require('solarized').setup({
 				styles = {
 					numbers = { fg = '#2aa198' },
+					functions = { fg = 'NONE' },
+					variables = { fg = 'NONE', italic = false },
+					parameters = { fg = 'NONE', italic = false },
 				},
+				theme = 'default',
 			})
 			-- load the colorscheme here
 			vim.cmd([[colorscheme solarized]])

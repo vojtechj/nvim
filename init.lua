@@ -26,7 +26,7 @@ lsp.on_attach(function(client, bufnr)
   lsp.default_keymaps({buffer = bufnr})
 
   -- LSP semantic token highlighting disabled
-  client.server_capabilities.semanticTokensProvider = nil
+  -- client.server_capabilities.semanticTokensProvider = nil
 end)
 
 -- Mason

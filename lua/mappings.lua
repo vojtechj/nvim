@@ -51,7 +51,7 @@ vim.keymap.set("n", "<leader>b", function() require('telescope.builtin').buffers
 vim.keymap.set("n", "<leader>d", function() require('telescope.builtin').oldfiles() end, {})
 
 vim.keymap.set("n", "gd", function() require('goto-preview').goto_preview_definition() end, {})
-vim.keymap.set("n", "gD", function() require('goto-preview').goto_preview_implementation() end, {})
+vim.keymap.set("n", "gD", function() require('goto-preview').goto_preview_declaration() end, {})
 vim.keymap.set("n", "gr", function() require('goto-preview').goto_preview_references() end, {})
 vim.keymap.set("n", "gt", function() require('goto-preview').goto_preview_type_definition() end, {})
 vim.keymap.set("n", "<c-[>", function() require('goto-preview').close_all_win() end, {})

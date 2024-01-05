@@ -41,7 +41,7 @@ vim.keymap.set("n", "<a-,>", "10<c-w><")
 vim.keymap.set("n", "<leader>;", ":")
 vim.keymap.set("n", "<leader>u", ":up<CR>")
 
-vim.keymap.set("n", "<leader>6", ":e #<CR>")
+vim.keymap.set("n", "<leader>a", ":e #<CR>")
 
 vim.keymap.set("n", "gk", "gg")
 vim.keymap.set("n", "gj", "G")

@@ -1,7 +1,7 @@
 vim.g.mapleader = " "
 
-vim.keymap.set("n", "<up>", "<c-y>0L")
-vim.keymap.set("n", "<down>", "<c-e>0H")
+vim.keymap.set("n", "<up>", "<c-y>")
+vim.keymap.set("n", "<down>", "<c-e>")
 vim.keymap.set("n", "<left>", "<c-u>0L")
 vim.keymap.set("n", "<right>", "<c-d>0H")
 
@@ -23,8 +23,8 @@ vim.keymap.set("n", "<leader>c", ":lclose<CR>")
 vim.keymap.set("n", "<c-p>", ":lprev<CR>zz")
 vim.keymap.set("n", "<c-n>", ":lnext<CR>zz")
 
-vim.keymap.set("n", "<c-d>", "<c-d>zz")
-vim.keymap.set("n", "<c-u>", "<c-u>zz")
+-- vim.keymap.set("n", "<c-d>", "<c-d>zz")
+-- vim.keymap.set("n", "<c-u>", "<c-u>zz")
 vim.keymap.set("n", "n", "nzz")
 vim.keymap.set("n", "N", "Nzz")
 
@@ -45,6 +45,11 @@ vim.keymap.set("n", "<leader>a", ":e #<CR>")
 
 vim.keymap.set("n", "gk", "gg")
 vim.keymap.set("n", "gj", "G")
+
+vim.keymap.set("n", "<leader>e", ":tabe <CR>")
+vim.keymap.set("n", "<leader>w", ":tabc <CR>")
+vim.keymap.set("n", "<leader>n", ":tabn <CR>")
+vim.keymap.set("n", "<leader>p", ":tabp <CR>")
 
 vim.keymap.set("n", "<leader>f", function() require('telescope.builtin').find_files() end, {})
 vim.keymap.set("n", "<leader>b", function() require('telescope.builtin').buffers() end, {})

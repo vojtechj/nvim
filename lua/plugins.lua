@@ -2,59 +2,46 @@ return {
 	-- NeoSolarized colorscheme
 	-- the colorscheme should be available when starting Neovim
 	{
-		"maxmx03/solarized.nvim",
-		lazy = false, -- make sure we load this during startup if it is your main colorscheme
-		priority = 1000, -- make sure to load this before all the other start plugins
-		config = function()
-			require('solarized').setup({
-				styles = {
-					numbers = { fg = '#2aa198' },
-					functions = { fg = 'NONE' },
-					variables = { fg = 'NONE', italic = false },
-					parameters = { fg = 'NONE', italic = false },
-				},
-			})
-			-- load the colorscheme here
-			vim.cmd([[colorscheme solarized]])
+		'maxmx03/solarized.nvim',
+		lazy = false,
+		priority = 1000,
+		---@type solarized.config
+		opts = {
+			styles = {
+				numbers = { fg = '#2aa198' },
+				functions = { fg = 'NONE' },
+				variables = { fg = 'NONE', italic = false },
+				parameters = { fg = 'NONE', italic = false },
+			},
+		},
+		config = function(_, opts)
+			vim.o.termguicolors = true
+			vim.o.background = 'dark'
+			require('solarized').setup(opts)
+			vim.cmd.colorscheme 'solarized'
 		end,
 	},
 
-	-- LSP-Zero
-	{'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
-
-	--- Uncomment these if you want to manage LSP servers from neovim
-	{'williamboman/mason.nvim'},
-	{'williamboman/mason-lspconfig.nvim'},
-
-	-- LSP Support
 	{
-		'neovim/nvim-lspconfig',
-		dependencies = {
-			{'hrsh7th/cmp-nvim-lsp'},
-		},
-	},
-
-	-- Autocompletion
-	{
-		'hrsh7th/nvim-cmp',
-		dependencies = {
-			{'L3MON4D3/LuaSnip'},
-		}
+		"mason-org/mason.nvim",
+		opts = {}
 	},
 
 	-- Telescope
 	{
-		'nvim-telescope/telescope.nvim', tag = '0.1.3',
+		'nvim-telescope/telescope.nvim', version = '*',
 		dependencies = {
-			{'nvim-lua/plenary.nvim' },
+			'nvim-lua/plenary.nvim',
+			-- optional but recommended
+			{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
 		}
-    },
+	},
 
 	-- Goto-Preview
 	{
-		'rmagatti/goto-preview',
-		config = function()
-			require('goto-preview').setup({})
-		end,
+		"rmagatti/goto-preview",
+		dependencies = { "rmagatti/logger.nvim" },
+		event = "BufEnter",
+		config = true, -- necessary as per https://github.com/rmagatti/goto-preview/issues/88
 	},
 }
